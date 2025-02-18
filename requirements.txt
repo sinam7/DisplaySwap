@@ -1,0 +1,8 @@
+cx_Freeze==7.2.10
+keyboard==0.13.5
+PyGetWindow==0.0.9
+pywin32==308
+comtypes==1.2.0
+uiautomation==2.0.17
+pystray==0.19.5
+Pillow==10.2.0
