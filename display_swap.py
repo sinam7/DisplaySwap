@@ -20,8 +20,8 @@ class DisplaySwapApp:
         self.tray_icon = None
         
     def create_tray_icon(self):
-        # 기본 아이콘이 없는 경우를 위한 1x1 검은색 이미지
-        image = Image.new('RGB', (64, 64), color='black')
+        # 기본 아이콘으로 icon.ico 사용
+        icon = Image.open("icon.ico")
         
         # 메뉴 생성
         menu = (
@@ -31,7 +31,7 @@ class DisplaySwapApp:
         
         self.tray_icon = pystray.Icon(
             "DisplaySwap",
-            image,
+            icon,
             "DisplaySwap",
             menu
         )

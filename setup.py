@@ -14,19 +14,22 @@ executables = [
     )
 ]
 
+# MSI 설치 프로그램에 대한 추가 옵션
+build_options = {
+    "includes": [],
+    "packages": [
+        "keyboard", "win32gui", "win32con", "win32api", 
+        "ctypes", "comtypes", "PIL", "pystray"
+    ],
+    "include_files": ["manifest.xml", "icon.ico"],
+}
+
 setup(
     name="DisplaySwap",
     version="1.0",
     description="Display Window Swap Tool",
     options={
-        "build_exe": {
-            "includes": [],
-            "packages": [
-                "keyboard", "win32gui", "win32con", "win32api", 
-                "ctypes", "comtypes", "PIL", "pystray"
-            ],
-            "include_files": ["manifest.xml"],
-        },
+        "build_exe": build_options,
     },
     executables=executables
 ) 
