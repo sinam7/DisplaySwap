@@ -57,11 +57,11 @@ python setup.py build
 
 이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
-### 써드파티 라이선스
+### 서드파티 라이선스
 
 이 프로그램은 다음 오픈소스 소프트웨어를 사용합니다:
 
-- cx_Freeze: PSF 라이선스 ([라이선스 전문](build/exe.win-amd64-3.11/frozen_application_license.txt))
+- cx_Freeze: PSF 라이선스 ([라이선스 전문](/frozen_application_license.txt))
 - pywin32: PSF 라이선스
 - keyboard: MIT 라이선스
 - pystray: MIT 라이선스
