@@ -104,6 +104,10 @@ class WindowUtils:
             height = rect[3] - rect[1]
             new_left = rect[0] + x_offset
             
+            # 가상 스크린의 왼쪽 끝 좌표 가져오기
+            virtual_screen_left = win32api.GetSystemMetrics(76)  # SM_XVIRTUALSCREEN
+            virtual_screen_width = win32api.GetSystemMetrics(78)  # SM_CXVIRTUALSCREEN
+            
             is_maximized = state['is_maximized']
             is_snapped = state['is_snapped']
             
@@ -111,11 +115,19 @@ class WindowUtils:
             if is_maximized:
                 width = 1920
                 height = 1080
-                target_display = max(0, (new_left + 960) // 1920)  # 중앙점 기준으로 판단
-                new_left = target_display * 1920
+                # 중앙점 기준으로 판단 (음수 좌표 고려)
+                current_display = (rect[0] + 960 - virtual_screen_left) // 1920
+                target_display = current_display + (1 if x_offset > 0 else -1)
+                new_left = virtual_screen_left + (target_display * 1920)
                 new_top = 0
             else:
                 new_top = rect[1]
+                
+                # 화면 밖으로 나가지 않도록 보정
+                if new_left < virtual_screen_left:
+                    new_left = virtual_screen_left
+                elif new_left + width > virtual_screen_left + virtual_screen_width:
+                    new_left = virtual_screen_left + virtual_screen_width - width
             
             title = win32gui.GetWindowText(hwnd)
             print(f"\n[{title}] 이동 시작:")

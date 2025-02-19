@@ -26,7 +26,7 @@ build_options = {
 
 setup(
     name="DisplaySwap",
-    version="1.0",
+    version="1.0.2",
     description="Display Window Swap Tool",
     options={
         "build_exe": build_options,
